@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "583248174346",
+    "project_id": "secretdiary-ebb75",
+    "storage_bucket": "secretdiary-ebb75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583248174346:android:3b799ff6fd0994af882ef3",
+        "android_client_info": {
+          "package_name": "com.furkancolak.secretdiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQd-GDPEw9zrHxMLIEmgBjOjLGRjCfkiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
