@@ -1,13 +1,10 @@
-package com.furkancolak.secretdiary
+package com.furkancolak.secretdiary.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.furkancolak.secretdiary.databinding.ActivityRegisterBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +21,7 @@ class ActivityRegister : AppCompatActivity() {
         auth = Firebase.auth
     }
     fun loginRegister(view: View){
-        val intent = Intent(this@ActivityRegister,MainActivity::class.java)
+        val intent = Intent(this@ActivityRegister, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -34,7 +31,7 @@ class ActivityRegister : AppCompatActivity() {
         if(email.isNotEmpty()&&password.isNotEmpty()){
             auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
                 Toast.makeText(this@ActivityRegister,"Kayıt başarılı",Toast.LENGTH_LONG).show()
-                val intent = Intent(this@ActivityRegister,MainActivity::class.java)
+                val intent = Intent(this@ActivityRegister, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
