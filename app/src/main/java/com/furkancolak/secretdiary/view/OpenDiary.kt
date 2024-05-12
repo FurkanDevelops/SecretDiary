@@ -46,9 +46,11 @@ class OpenDiary : AppCompatActivity() {
             val intent = Intent(this@OpenDiary, WriteDairy::class.java)
             startActivity(intent)
         }
+
     }
 
     fun getData() {
+        val userEmail = auth.currentUser?.email
         db.collection("Post").addSnapshotListener { value, error ->
             if (error != null) {
                 Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
@@ -58,13 +60,14 @@ class OpenDiary : AppCompatActivity() {
                 val documents = value.documents
                 postArrayList.clear() // Clear the existing list before adding new data
                 for (document in documents) {
-                    val email = document.get("email") as String?
-                    val date1 = document.get("date") as Timestamp?
-                    val date = date1?.toDate()?.toString() ?: "" // Use toDate() to convert Timestamp to Date object
-                    val title = document.get("title") as String?
-                    val comment = document.get("comment") as String?
-                    val post = Diary(email, comment, date, title)
-                    postArrayList.add(post)
+                    if(userEmail == document.get("email") as String){
+                        val date1 = document.get("date") as Timestamp?
+                        val date = date1?.toDate()?.toString() ?: "" // Use toDate() to convert Timestamp to Date object
+                        val title = document.get("title") as String?
+                        val comment = document.get("comment") as String?
+                        val post = Diary(userEmail, comment, date, title)
+                        postArrayList.add(post)
+                    }
                 }
                 feedAdapter.notifyDataSetChanged()
             }
